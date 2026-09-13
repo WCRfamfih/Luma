@@ -1,0 +1,12 @@
+build/
+dist/
+artifacts/
+*.obj
+*.pdb
+*.ilk
+__pycache__/
+*.pyc
+.venv/
+.env
+settings.ini
+session.json

@@ -1,0 +1,30 @@
+name: Windows build
+on: [push, pull_request, workflow_dispatch]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: windows-2022
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x64 and x86
+        shell: pwsh
+        run: |
+          ./build.ps1
+          ./build.ps1 -Architecture x86
+      - name: Audio and spring numerical self-tests
+        shell: pwsh
+        run: |
+          foreach ($name in @('Luma.exe','Luma-x86.exe')) {
+            $process = Start-Process -FilePath "dist/$name" -ArgumentList '--self-test' -WindowStyle Hidden -Wait -PassThru
+            if ($process.ExitCode -ne 0) { throw "$name self-test failed" }
+          }
+      - name: Package
+        shell: pwsh
+        run: ./package.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Luma-Windows
+          path: |
+            dist/Luma-1.0.0-Windows.zip
+            dist/SHA256SUMS.txt

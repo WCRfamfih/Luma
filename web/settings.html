@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Luma 流光 — 声音的形状</title>
+<style>
+:root{color-scheme:dark;--bg:#101415;--panel:#191e20;--ink:#f3f6f4;--muted:#9ba9a6;--accent:#9de5cc;--line:#2c3535}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.6 'Segoe UI','Microsoft YaHei',sans-serif}button,input,select{font:inherit}button,select,input[type=color]{cursor:pointer}button{color:var(--ink);background:transparent;border:1px solid var(--line);padding:10px 16px;border-radius:9px;transition:background .15s}button:hover{background:var(--line)}button:active{transform:translateY(1px)}button:disabled{opacity:.4;cursor:wait}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:4px}button.active,.primary{background:var(--accent);border-color:var(--accent);color:var(--bg)}header{display:flex;align-items:center;justify-content:space-between;padding:24px 40px;border-bottom:1px solid var(--line)}.brand{display:flex;gap:13px;align-items:center}.mark{width:28px;height:28px;border:2px solid var(--ink);border-radius:50%;box-shadow:inset 4px 0 0 var(--accent)}.wordmark{font-size:23px;font-weight:600;letter-spacing:1px}.brand small{color:var(--muted);font-size:13px;letter-spacing:3px;margin-left:12px}.connection{font-size:12px;color:var(--muted)}.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:8px}.container{max-width:1440px;margin:auto;padding:36px 40px 24px;display:grid;grid-template-columns:minmax(340px,1.25fr) minmax(340px,1fr);gap:40px}.eyebrow{font-size:11px;font-weight:600;letter-spacing:2px;color:var(--accent)}h1{font-size:clamp(30px,3vw,44px);font-weight:400;line-height:1.3;letter-spacing:-1px;margin:12px 0 10px}p{color:var(--muted);margin:0;text-wrap:pretty}.preview{margin-top:28px;position:relative;aspect-ratio:1.18;border:1px solid var(--line);border-radius:20px;overflow:hidden;background-color:#151a1b;background-image:linear-gradient(45deg,#1b2021 25%,transparent 25%),linear-gradient(-45deg,#1b2021 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#1b2021 75%),linear-gradient(-45deg,transparent 75%,#1b2021 75%);background-size:24px 24px;background-position:0 0,0 12px,12px -12px,-12px 0}.preview canvas{width:100%;height:100%;display:block}.preview-label{position:absolute;left:20px;top:17px;font-size:11px;letter-spacing:1px;color:var(--muted)}.preview-info{position:absolute;bottom:18px;left:20px;right:20px;display:flex;justify-content:space-between;color:var(--muted);font-size:11px}.preview-info b{color:var(--ink);font-weight:500}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.toolbar button{flex:1;white-space:nowrap}.metrics{display:grid;grid-template-columns:repeat(3,1fr);padding:24px 0;margin-top:6px;border-bottom:1px solid var(--line)}.metrics div+div{border-left:1px solid var(--line);padding-left:24px}.metrics strong{font-size:23px;font-weight:400;font-variant-numeric:tabular-nums}.metrics span{color:var(--muted);font-size:11px;display:block}.metrics small{font-size:11px;color:var(--muted);margin-left:4px}.help{margin-top:20px;font-size:12px;line-height:1.9}.help b{color:var(--ink);font-weight:500}.controls{padding-top:3px}.group{padding:0 0 25px;border-bottom:1px solid var(--line);margin-bottom:24px}.group-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}h2{font-size:15px;font-weight:500;margin:0}.number{color:var(--muted);font-size:11px;letter-spacing:2px}.segmented{display:flex;gap:6px;padding:5px;background:var(--panel);border-radius:12px}.segmented button{flex:1;border:none;padding:11px 6px;font-size:13px}.color-row{display:flex;align-items:center;gap:10px;margin:22px 0}.swatch{width:26px;height:26px;border-radius:50%;padding:0;border:3px solid var(--bg);outline:1px solid var(--line);background:var(--swatch)}.swatch:hover,.swatch.selected{outline:2px solid var(--accent);background:var(--swatch)}.color-custom{margin-left:auto;display:flex;align-items:center;gap:9px;font-variant-numeric:tabular-nums;font-size:12px;color:var(--muted)}input[type=color]{width:30px;height:30px;border:0;background:transparent;padding:0}input[type=range]{width:100%;height:4px;accent-color:var(--accent);cursor:pointer;margin:12px 0 8px}.range{margin-top:18px}.label{display:flex;justify-content:space-between;align-items:center;gap:10px}.label label{color:var(--muted);font-size:13px}output{font-size:12px;font-variant-numeric:tabular-nums}.range-pair{display:grid;grid-template-columns:1fr 1fr;gap:26px}.select-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}select{width:100%;margin-top:9px;padding:9px;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px}.toggle-row{display:flex;justify-content:space-between;align-items:center;margin-top:20px}.toggle-row label{font-size:13px}.toggle-row small{display:block;color:var(--muted);font-size:11px;margin-top:4px}.switch{appearance:none;width:36px;height:21px;background:var(--line);border-radius:30px;position:relative;cursor:pointer;flex-shrink:0}.switch:before{content:'';width:15px;height:15px;border-radius:50%;background:var(--muted);position:absolute;top:3px;left:3px;transition:transform .15s}.switch:checked{background:var(--accent)}.switch:checked:before{background:var(--bg);transform:translateX(15px)}.footer-row{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:11px}.footer-row button{font-size:12px;padding:7px 12px}.notice{display:none;padding:14px 20px;border-bottom:1px solid var(--line);color:var(--accent);text-align:center}.notice.show{display:block}.audio-line{height:2px;background:var(--line);margin-top:13px;overflow:hidden}.audio-line i{display:block;height:100%;width:0;background:var(--accent);transition:width .15s}footer{max-width:1440px;margin:auto;padding:0 40px 25px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between}
+@media(max-width:850px){header{padding:20px}.container{padding:26px 20px;grid-template-columns:1fr;gap:32px}.preview{max-height:480px}.controls{padding-top:0}footer{padding:0 20px 22px}.brand small{display:none}}@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+[hidden]{display:none!important}
+.settings-nav{position:sticky;top:0;z-index:2;background:var(--bg);padding:12px 0 20px;margin-bottom:26px;border-bottom:1px solid var(--line)}
+.settings-nav-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:14px;font-size:15px}
+.settings-caption{font-size:11px;color:var(--muted)}
+.settings-tabs button{min-height:44px;font-size:14px}
+.settings-nav p{font-size:12px;margin-top:12px}
+.control-hint{font-size:11px;line-height:1.7;margin-top:4px}
+.breath-readout{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:11px;margin:8px 0 4px}
+.breath-readout .audio-line{flex:1;margin-top:0;height:3px}
+.select-row:has([hidden]){grid-template-columns:1fr}
+@media(min-width:1000px){.container>section:first-child{position:sticky;top:20px;align-self:start}}
+@media(max-width:850px){.preview{max-height:360px}.settings-nav{padding-top:10px}.container{gap:22px}}
+.product-footer{flex-wrap:wrap;gap:14px 32px;border-top:1px solid var(--line);padding-top:22px;margin-top:12px;align-items:start;line-height:1.9}
+.product-footer .credits{display:flex;flex-wrap:wrap;gap:5px 18px}
+.product-footer a{color:var(--accent);text-decoration:none;text-underline-offset:3px}
+.product-footer a:hover{text-decoration:underline}
+.product-footer a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:2px}
+.product-footer .license-note{flex-basis:100%;max-width:760px;font-size:11px}
+</style></head><body>
+<header><div class="brand"><span class="mark" aria-hidden="true"></span><span class="wordmark">Luma<small>流光</small></span></div><span class="connection" id="connection"><i class="dot"></i>正在连接本地应用</span></header>
+<div class="notice" id="notice" role="status"></div>
+<main class="container"><section><div class="eyebrow">SOUND, IN A DIFFERENT LIGHT</div><h1>让声音，悬浮在眼前。</h1><p>流动的粒子薄纱，让低频化作一阵海浪。</p>
+<div class="preview"><span class="preview-label">实时形态预览 · 辉光以悬浮窗口为准</span><canvas id="preview" aria-label="实时音频粒子预览"></canvas><div class="preview-info"><span id="audioState">等待音频设备</span><b id="modeName">弹性音频环</b></div></div>
+<div class="toolbar"><button id="visibility">隐藏悬浮球</button><button id="pause">暂停动画</button><button id="center">移到屏幕中央</button></div>
+<div class="metrics"><div><strong id="actualFps">—</strong><small>FPS</small><span>悬浮窗口实时帧率</span></div><div><strong id="cpu">—</strong><small>%</small><span>CPU · 整机占比</span></div><div><strong id="memory">—</strong><small>MB</small><span>进程工作集内存</span></div></div>
+<p class="help"><b>拖动</b>悬浮球调整位置，<b>滚轮</b>调整大小。<br>锁定后鼠标直接穿过；在系统托盘右键 Luma 图标即可解锁。<br>关闭此网页，悬浮球仍然运行。音频仅在本机实时分析。</p></section>
+<section class="controls" aria-label="可视化设置">
+<div class="settings-nav">
+ <div class="settings-nav-title"><span>调整效果</span><span class="settings-caption">即时生效 · 自动保存</span></div>
+ <div class="segmented settings-tabs" role="tablist" aria-label="参数复杂度">
+  <button id="simpleTab" type="button" role="tab" data-settings-view="simple" aria-controls="settingsPanel" aria-selected="true" class="active">简易</button>
+  <button id="advancedTab" type="button" role="tab" data-settings-view="advanced" aria-controls="settingsPanel" aria-selected="false" tabindex="-1">高级</button>
+ </div>
+ <p id="viewDescription">先调颜色、大小、声音响应和呼吸光。</p>
+</div>
+<div id="settingsPanel" role="tabpanel" aria-labelledby="simpleTab">
+<div class="group"><div class="group-head"><h2>形态与色彩</h2><span class="number">LOOK</span></div>
+<div class="segmented" data-advanced hidden aria-label="形态"><button data-mode="0" class="active">弹性音频环</button><button data-mode="1">声波光环</button></div>
+<div class="color-row"><button class="swatch" style="--swatch:#F4FAFF" data-color="#F4FAFF" aria-label="月光白"></button><button class="swatch" style="--swatch:#9DE5CC" data-color="#9DE5CC" aria-label="薄荷绿"></button><button class="swatch" style="--swatch:#74BFFF" data-color="#74BFFF" aria-label="冰川蓝"></button><button class="swatch" style="--swatch:#FFCB81" data-color="#FFCB81" aria-label="琥珀金"></button><button class="swatch" style="--swatch:#FF8E96" data-color="#FF8E96" aria-label="珊瑚红"></button><div class="color-custom"><span id="hex">#F4FAFF</span><input type="color" id="color" value="#f4faff" aria-label="自定义粒子颜色"></div></div>
+<div class="range"><div class="label"><label for="size">悬浮窗口尺寸</label><output for="size"></output></div><input id="size" type="range" min="160" max="2400" step="1"></div>
+<div class="range"><div class="label"><label for="opacity">不透明度</label><output for="opacity"></output></div><input id="opacity" type="range" min="0.1" max="1" step="0.05"></div>
+<div class="range" data-advanced hidden><div class="label"><label for="pointSize">粒子大小</label><output for="pointSize"></output></div><input id="pointSize" type="range" min="0.5" max="4" step="0.1"></div>
+</div>
+<div class="group"><div class="group-head"><h2>声音与呼吸</h2><span class="number">RHYTHM</span></div>
+<div class="range"><div class="label"><label for="sensitivity">音频灵敏度</label><output for="sensitivity"></output></div><input id="sensitivity" type="range" min="0.1" max="5" step="0.1"></div>
+<div class="audio-line"><i id="level"></i></div>
+<div class="range"><div class="label"><label for="bloomStrength">基础辉光强度</label><output for="bloomStrength"></output></div><input id="bloomStrength" type="range" min="0" max="3" step="0.05"></div>
+<div class="range"><div class="label"><label for="bloomPulse">鼓点呼吸力度</label><output for="bloomPulse"></output></div><input id="bloomPulse" type="range" min="0" max="3" step="0.05"><p class="control-hint">鼓点让光晕亮起，再自然回落。0 可关闭呼吸，保留基础辉光。</p></div>
+<div class="breath-readout" aria-hidden="true"><span>鼓点响应</span><div class="audio-line"><i id="breathLevel"></i></div></div>
+<div class="range"><div class="label"><label for="innerBounce">内部鼓点弹跳</label><output for="innerBounce"></output></div><input id="innerBounce" type="range" min="0" max="2" step="0.05"><p class="control-hint">鼓点让内部粒子跃起，自身惯性带它们错峰回落。</p></div>
+<div class="toggle-row"><label for="demo">演示模式<small>没有音乐时，用模拟鼓点试试效果</small></label><input id="demo" class="switch" type="checkbox"></div>
+</div>
+<div class="group" data-advanced hidden><div class="group-head"><h2>粒子薄纱与海浪</h2><span class="number">FLOW</span></div>
+<div class="range"><div class="label"><label for="innerDensity">中间粒子密度</label><output for="innerDensity"></output></div><input id="innerDensity" type="range" min="0" max="1" step="0.05"></div>
+<div class="range"><div class="label"><label for="innerOpacity">中间粒子亮度</label><output for="innerOpacity"></output></div><input id="innerOpacity" type="range" min="0" max="1" step="0.05"></div>
+<div class="range"><div class="label"><label for="flowStrength">流线聚拢强度</label><output for="flowStrength"></output></div><input id="flowStrength" type="range" min="0" max="2" step="0.05"></div>
+<div class="range"><div class="label"><label for="waveStrength">低频海浪力度</label><output for="waveStrength"></output></div><input id="waveStrength" type="range" min="0" max="3" step="0.05"></div>
+<div class="range"><div class="label"><label for="waveSpeed">海浪下扫速度</label><output for="waveSpeed"></output></div><input id="waveSpeed" type="range" min="0.3" max="3" step="0.05"></div>
+<div class="range"><div class="label"><label for="waveRoughness">海浪不规则度</label><output for="waveRoughness"></output></div><input id="waveRoughness" type="range" min="0" max="2" step="0.05"></div>
+</div>
+<div class="group" data-advanced hidden><div class="group-head"><h2>空间运动与回弹</h2><span class="number">MOTION</span></div>
+<div class="range"><div class="label"><label for="motion">流动速度</label><output for="motion"></output></div><input id="motion" type="range" min="0" max="3" step="0.1"></div>
+<div class="range"><div class="label"><label for="rotationSpeed">三维游转速度</label><output for="rotationSpeed"></output></div><input id="rotationSpeed" type="range" min="0" max="2" step="0.05"></div>
+<div class="range"><div class="label"><label for="physicsFreedom">回弹自主度</label><output for="physicsFreedom"></output></div><input id="physicsFreedom" type="range" min="0" max="1" step="0.05"><p class="control-hint">默认 50%：较紧的驱动响应与自由弹簧回落各占一半。</p></div>
+<div class="range"><div class="label"><label for="outerWaveInfluence">海浪影响外环</label><output for="outerWaveInfluence"></output></div><input id="outerWaveInfluence" type="range" min="0" max="1" step="0.05"><p class="control-hint">默认 20%。外环自主流动，音乐驱动整体缩放。</p></div>
+</div>
+<div class="group" data-advanced hidden><div class="group-head"><h2>辉光细节</h2><span class="number">LIGHT</span></div>
+<div class="range"><div class="label"><label for="bloomDecay">呼吸回落时间</label><output for="bloomDecay"></output></div><input id="bloomDecay" type="range" min="0.1" max="1.5" step="0.05"><p class="control-hint">越长，鼓点后的光晕回落越舒展。</p></div>
+<div class="range"><div class="label"><label for="bloomSpread">光晕传播范围</label><output for="bloomSpread"></output></div><input id="bloomSpread" type="range" min="0.3" max="2" step="0.05"></div>
+<div class="range"><div class="label"><label for="heatStrength">密集区炙热发白</label><output for="heatStrength"></output></div><input id="heatStrength" type="range" min="0" max="3" step="0.05"></div>
+<div class="range"><div class="label"><label for="glow">柔光强度</label><output for="glow"></output></div><input id="glow" type="range" min="0" max="3" step="0.1"></div>
+</div>
+<div class="group"><div class="group-head"><h2>悬浮与性能</h2><span class="number">OVERLAY</span></div>
+<div class="select-row"><label>粒子密度<select id="density"><option value="1">轻盈 · 约 9 千粒子上限</option><option value="2">均衡 · 约 2 万粒子上限</option><option value="3">细腻 · 约 3.7 万粒子上限</option></select></label><label data-advanced hidden>帧率上限<select id="fps"><option value="30">30 FPS · 节能</option><option value="60">60 FPS · 流畅</option><option value="120">120 FPS · 高刷</option></select></label></div>
+<div class="range" data-advanced hidden><div class="label"><label for="aaStrength">抗锯齿 · 保留颗粒</label><output for="aaStrength"></output></div><input id="aaStrength" type="range" min="0" max="1" step="0.05"><p class="control-hint">FXAA + 亚像素覆盖，默认 75%；0 为关闭。</p></div>
+<div class="toggle-row"><label for="locked">锁定位置 / 鼠标穿透<small>置顶显示，不影响下方窗口操作</small></label><input id="locked" class="switch" type="checkbox"></div>
+</div>
+</div>
+<div class="footer-row"><span id="saveState" role="status">设置自动保存至本机</span><button id="reset">恢复默认</button></div>
+</section></main><footer class="product-footer" aria-label="关于与开源信息"><div class="credits"><span>LUMA / 流光 1.0.0</span><span>作者 WCRfamfih</span><a href="https://github.com/WCRfamfih/Luma" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div><span id="renderNote">原生 GPU 渲染 · 本机音频 · 无需登录</span><p class="license-note">基于 MIT 协议开源：允许使用、修改、商用和再分发，须保留版权声明与许可证；软件按原样提供，不作担保。<a href="https://github.com/WCRfamfih/Luma/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">阅读完整协议 ↗</a></p></footer>
+<script>
+const $=id=>document.getElementById(id), token=location.hash.slice(1)||sessionStorage.getItem('luma-token')||'';if(token){sessionStorage.setItem('luma-token',token);history.replaceState(null,'',location.pathname)}
+let state=null,pending={},saveTimer,busy=false,connected=false,previewTime=0,lastTime=0,pollTimer;const controls=['color','pointSize','glow','opacity','sensitivity','motion','demo','size','density','fps','locked','innerDensity','innerOpacity','flowStrength','waveStrength','waveSpeed','physicsFreedom','rotationSpeed','waveRoughness','bloomStrength','bloomSpread','heatStrength','outerWaveInfluence','innerBounce','aaStrength','bloomPulse','bloomDecay'];
+function setSettingsView(view,persist=true){
+ const advanced=view==='advanced';view=advanced?'advanced':'simple';
+ document.querySelectorAll('[data-advanced]').forEach(el=>el.hidden=!advanced);
+ document.querySelectorAll('[data-settings-view]').forEach(tab=>{const active=tab.dataset.settingsView===view;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));tab.tabIndex=active?0:-1});
+ $('settingsPanel').setAttribute('aria-labelledby',advanced?'advancedTab':'simpleTab');
+ $('viewDescription').textContent=advanced?'完整参数：细调薄纱、海浪、回弹和渲染。':'先调颜色、大小、声音响应和呼吸光。';
+ if(persist)try{localStorage.setItem('luma-settings-view',view)}catch{}
+}
+document.querySelectorAll('[data-settings-view]').forEach(tab=>{
+ tab.onclick=()=>setSettingsView(tab.dataset.settingsView);
+ tab.onkeydown=e=>{if(!['ArrowLeft','ArrowRight','Home','End'].includes(e.key))return;e.preventDefault();const view=e.key==='Home'?'simple':e.key==='End'?'advanced':tab.dataset.settingsView==='simple'?'advanced':'simple';setSettingsView(view);$(view==='simple'?'simpleTab':'advancedTab').focus()};
+});
+let savedView='simple';try{savedView=localStorage.getItem('luma-settings-view')||'simple'}catch{}setSettingsView(savedView,false);
+function notice(text){$('notice').textContent=text;$('notice').classList.toggle('show',!!text)}
+async function api(path,values){const response=await fetch('/api/'+path,{method:values?'POST':'GET',headers:{'X-Luma-Token':token,...(values?{'Content-Type':'application/x-www-form-urlencoded'}:{})},body:values?new URLSearchParams(values):undefined,signal:AbortSignal.timeout(3500)});if(!response.ok)throw Error(response.status===403?'请从系统托盘右键 Luma 图标重新打开设置。':'设置未保存，请重试。');return response.json()}
+function labels(){for(const id of ['pointSize','glow','opacity','sensitivity','motion','size','innerDensity','innerOpacity','flowStrength','waveStrength','waveSpeed','physicsFreedom','rotationSpeed','waveRoughness','bloomStrength','bloomSpread','heatStrength','outerWaveInfluence','innerBounce','aaStrength','bloomPulse','bloomDecay']){let v=+$(id).value;document.querySelector('output[for="'+id+'"]').textContent=id==='bloomDecay'?Math.round(v*1000)+' ms':id==='size'?v+' px':['opacity','innerDensity','innerOpacity','physicsFreedom','outerWaveInfluence','aaStrength'].includes(id)?Math.round(v*100)+'%':v.toFixed(1)+'×'}$('hex').textContent=$('color').value.toUpperCase();document.querySelectorAll('[data-color]').forEach(b=>b.classList.toggle('selected',b.dataset.color.toLowerCase()===$('color').value.toLowerCase()))}
+function sync(s,force=false){state=s;connected=true;$('connection').innerHTML='<i class="dot"></i>本地应用已连接';notice('');for(const id of controls){if(!force&&(document.activeElement===$(id)||id in pending))continue;if($(id).type==='checkbox')$(id).checked=!!s[id];else $(id).value=s[id]}labels();document.querySelectorAll('[data-mode]').forEach(b=>{b.classList.toggle('active',+b.dataset.mode===s.mode);b.setAttribute('aria-pressed',+b.dataset.mode===s.mode)});$('modeName').textContent=s.mode?'声波光环':'弹性音频环';$('visibility').textContent=s.visible?'隐藏悬浮球':'显示悬浮球';$('pause').textContent=s.paused?'继续动画':'暂停动画';$('actualFps').textContent=s.actualFps.toFixed(0);$('cpu').textContent=s.cpu<.01?'<0.01':s.cpu.toFixed(2);$('memory').textContent=s.memoryMb;$('audioState').textContent=s.demo?'模拟节奏 · 演示模式':!s.audioConnected?'未找到输出设备 · 自动重连中':s.rms<.0005?'系统音频已连接 · 等待播放':`系统音频 · ${(s.sampleRate/1000).toFixed(1)} kHz`;$('breathLevel').style.width=Math.min(100,Math.max(0,s.bloomEnvelope||0)*100)+'%';$('level').style.width=Math.min(100,s.rms*400*s.sensitivity)+'%';if(s.softwareRenderer)$('renderNote').textContent='软件渲染模式 · 建议更新显卡驱动';}
+function queue(key,value){pending[key]=value;if(state)state[key]=key==='color'?value:+value;labels();$('saveState').textContent='正在保存…';clearTimeout(saveTimer);saveTimer=setTimeout(flush,130)}
+async function flush(){if(busy)return;const values=pending;if(!Object.keys(values).length)return;pending={};busy=true;try{const s=await api('settings',values);sync(s);$('saveState').textContent='已保存 · 即时生效'}catch(e){notice(e.message);$('saveState').textContent='保存失败，请重新调整参数'}finally{busy=false;if(Object.keys(pending).length)flush()}}
+controls.forEach(id=>$(id).addEventListener('input',()=>queue(id,$(id).type==='checkbox'?+$(id).checked:$(id).value)));document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>queue('mode',b.dataset.mode));document.querySelectorAll('[data-color]').forEach(b=>b.onclick=()=>{$('color').value=b.dataset.color;queue('color',b.dataset.color)});
+for(const action of ['visibility','pause','center','reset'])$(action).onclick=async()=>{const b=$(action);b.disabled=true;try{await api('action',{action});setTimeout(poll,120)}catch(e){notice(e.message)}finally{b.disabled=false}};
+async function poll(){clearTimeout(pollTimer);if(!document.hidden&&!busy&&!Object.keys(pending).length)try{sync(await api('state'))}catch(e){connected=false;$('connection').textContent='本地应用未连接';notice(token?e.message:'请从系统托盘右键 Luma 图标，选择「打开设置」。')}pollTimer=setTimeout(poll,document.hidden?1000:50)}document.addEventListener('visibilitychange',()=>{if(!document.hidden)poll()});poll();
+const canvas=$('preview'),ctx=canvas.getContext('2d'),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let lastDraw=0,visualSpring=0;
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function smooth(a,b,v){v=clamp((v-a)/(b-a),0,1);return v*v*(3-2*v)}
+function hash(n){return ((Math.sin(n*127.1+311.7)*43758.5453)%1+1)%1}
+function draw(ts){
+ requestAnimationFrame(draw);if(document.hidden||!state||ts-lastDraw<(reduced?100:33))return;
+ const dt=Math.min((ts-(lastTime||ts))/1000,.1);lastTime=ts;lastDraw=ts;
+ if(!state.paused&&connected)previewTime+=dt;
+ const rect=canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio,2);
+ if(canvas.width!==Math.round(rect.width*dpr)||canvas.height!==Math.round(rect.height*dpr)){canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.height*dpr)}
+ const w=canvas.width,h=canvas.height,dimension=Math.min(w,h),size=dimension*.5,t=previewTime*state.motion;
+ let displacement=state.spring||0;
+ if(state.demo){const phase=previewTime%.6;displacement=1.7*Math.exp(-8.5*phase)*Math.sin(10.9*phase)}
+ if(!state.paused)visualSpring+=(displacement-visualSpring)*(1-Math.exp(-dt*28));
+ const spring=clamp(visualSpring*state.sensitivity,-.3,1.25),coupling=state.outerWaveInfluence??.2;
+ const packet=state.demo?Array.from({length:4},(_,k)=>[previewTime%.6+k*.6,.8]):(state.waves||[]);
+ const angles=state.orientation||[0,0,0],sx=Math.sin(angles[0]),cx=Math.cos(angles[0]),sy=Math.sin(angles[1]),cy=Math.cos(angles[1]),sz=Math.sin(angles[2]),cz=Math.cos(angles[2]);
+ function turn(p,inverse=false){let [x,y,z]=p;if(inverse){[x,y]=[x*cz+y*sz,-x*sz+y*cz];[x,z]=[x*cy-z*sy,x*sy+z*cy];[y,z]=[y*cx+z*sx,-y*sx+z*cx]}else{[y,z]=[y*cx-z*sx,y*sx+z*cx];[x,z]=[x*cy+z*sy,-x*sy+z*cy];[x,y]=[x*cz-y*sz,x*sz+y*cz]}return [x,y,z]}
+ function curlAt(theta,age,k){return (Math.sin(theta*2+t*.25+k*1.71)*.14+Math.sin(theta*5+age*.8+k)*.075+Math.sin(theta*9-k)*.025)*state.waveRoughness}
+ function waveAt(y,theta){let warp=0,crest=0;for(let k=0;k<packet.length;k++){
+  const [age,power]=packet[k];if(!power)continue;
+  const force=power*state.waveStrength*state.sensitivity,front=1.12-age*state.waveSpeed*1.65,curl=curlAt(theta,age,k)*Math.sqrt(Math.max(0,1-y*y)),width=1+Math.min(1,state.waveRoughness)*(-.5+.9*Math.pow(.5+.5*Math.sin(theta*4+k*2.1+t*.16),2)),d=(y-front+curl)/width,branch=(y-front+curl+.16*Math.sin(theta*6+k)*Math.sqrt(Math.max(0,1-y*y)))/Math.max(.35,width*.5),alive=1-smooth(1.7,2.2,age*state.waveSpeed);
+  const driven=Math.sin(d*10)*Math.exp(-d*d*13)*force*.13*alive,localAge=age-Math.max(0,1.12-y)/(state.waveSpeed*1.65),free=localAge>0?Math.exp(-(4.8-2.3*state.physicsFreedom)*localAge)*Math.sin((10.5+Math.sin(theta*3)*1.5)*localAge)*force*.22:0;
+  warp+=(1-state.physicsFreedom)*driven+state.physicsFreedom*free;crest+=(Math.exp(-d*d*100)+Math.exp(-branch*branch*135)*.4*state.waveRoughness)*force*alive*smooth(.04,.22,age*state.waveSpeed);
+ }return [clamp(warp,-.3,.3),Math.min(crest,1.6)]}
+ function bounceAt(seed){let d=0;const variation=((Math.sin(seed*91.7+23.6)*17341.71)%1+1)%1;for(const [time,power] of (state.demo?packet:(state.kicks||[]))){const age=time-variation*.055;if(age>0){const driven=Math.exp(-8.5*age)*Math.sin(10.9*age)*.34,free=Math.exp(-(2.8+variation*1.4)*age)*Math.sin((8.4+variation*4.2)*age)*.34;d+=((1-state.physicsFreedom)*driven+state.physicsFreedom*free)*Math.sqrt(clamp((power-.02)*2.5,0,1))*state.sensitivity}}return clamp(d,-.2,.28)*(state.innerBounce??1)}
+ function radius(n,wave){const [x,y,z]=n,broad=Math.sin(x*3+y*1.8+t*.31)*Math.cos(z*2.8-y*2.1-t*.27),detail=Math.sin(x*4.6-y*2.4+z*1.6+t*.19)*Math.cos(y*3.4+z*2.2-t*.23);return clamp((.785+.044*broad+.012*detail+wave[0]*.95*coupling)*(1+.1*spring),.62,.94)}
+ ctx.clearRect(0,0,w,h);ctx.fillStyle=state.color;
+ const columns=state.density===1?128:state.density===2?192:256,total=columns*(state.density===1?48:state.density===2?72:96),rimCount=Math.floor(total/3);
+ for(let i=0;i<total+total/2;i++){
+  let alpha,pixels,pos,crease=0;
+  if(i>=total){
+   const perWave=total/8,id=i-total,k=Math.min(3,Math.floor(id/perWave)),index=id%perWave,cols=Math.max(16,Math.floor(columns*2*Math.sqrt(Math.max(state.innerDensity,.001)))),rows=Math.max(2,Math.floor(perWave/cols));
+   if(state.mode||state.innerDensity<=0||index>=cols*rows||!packet[k]||packet[k][1]<=0)continue;
+   const u=(index%cols)/cols,v=Math.floor(index/cols)/Math.max(1,rows-1),theta=u*Math.PI*2,[age,power]=packet[k],force=power*state.waveStrength*state.sensitivity,ribbonWidth=.018+.022*Math.pow(.5+.5*Math.sin(theta*4+k*2.1),2),front=1.12-age*state.waveSpeed*1.65;let y=front;for(let j=0;j<3;j++)y=front-curlAt(theta,age,k)*Math.sqrt(Math.max(0,1-y*y))+(v-.5)*ribbonWidth;
+   if(Math.abs(y)>=.995)continue;
+   const cp=Math.sqrt(Math.max(0,1-y*y)),n=[Math.sin(theta)*cp,y,Math.cos(theta)*cp],wave=waveAt(y,theta),r=radius(n,wave)-.004;pos=turn(n.map(x=>x*r));
+   alpha=force*(1-smooth(1.7,2.2,age*state.waveSpeed))*state.innerOpacity*state.flowStrength*state.opacity*smooth(-.08,.35,pos[2])*(.38+.32*Math.sin(v*Math.PI))*smooth(.05,.32,cp)*smooth(.04,.22,age*state.waveSpeed);alpha*=.12+.88*smooth(-.35,.7,Math.sin(theta*2+k*1.7+age*.4)+.35*Math.sin(theta*5-k));crease=2;
+   pixels=state.pointSize*(1.05+.22*Math.sin(v*Math.PI))*dimension/600;
+  }else if(i<rimCount){
+   const cols=columns*2,row=Math.floor(i/cols),u=((i%cols)+(row*.6180339)%1)/cols,v=row/Math.ceil(rimCount/cols),theta=u*Math.PI*2,dir=[Math.cos(theta),Math.sin(theta)];
+   let limb=0,rimWave=[0,0];for(let j=-1;j<=1;j++){const z=j*.24,cp=Math.sqrt(1-z*z),n=turn([dir[0]*cp,dir[1]*cp,z],true),wave=waveAt(n[1],Math.atan2(n[0],n[2])),candidate=radius(n,wave)*cp;if(candidate>limb){limb=candidate;rimWave=wave}}
+   const cloth=turn([dir[0],dir[1],0],true),dot=(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],drift=Math.sin(dot(cloth,[2.7,-1.8,2.3])+t*.23)+.45*Math.sin(dot(cloth,[-4.2,3.1,1.7])-t*.17),lobe=Math.pow(smooth(-.9,1.15,drift),1.6),width=.020+lobe*(.145+.020*(.5+.5*Math.sin(dot(cloth,[4,2,-3])+t*.13)))+coupling*(rimWave[1]*.038+Math.abs(rimWave[0])*.22),r=state.mode?limb+(v-.5)*.025:limb+.012-Math.pow(1-v,1.35)*width+Math.sin(theta*3+t*.3+v*3)*.002*(1-v);
+   pos=[dir[0]*r,dir[1]*r,0];alpha=(.40+.60*Math.pow(v,.45)+.30*Math.pow(Math.sin(v*Math.PI),2)+rimWave[1]*.35*coupling)*state.opacity;
+   pixels=state.pointSize*(1.15+.2*hash(i)+rimWave[1]*.2*coupling)*dimension/600;
+  }else{
+   const id=i-rimCount,count=Math.max(1,Math.floor((total-rimCount)*state.innerDensity));
+   if(id>=count||state.innerDensity<=0)continue;
+   const u=(id*.61803398875)%1,v=(id+.5)/count,theta=u*Math.PI*2,y=clamp(1-2*v,-1,1),cp=Math.sqrt(Math.max(0,1-y*y));
+   let n=[Math.sin(theta)*cp,y,Math.cos(theta)*cp].map((x,j)=>x+(hash(id*3+j+1)-.5)*.025);let norm=Math.hypot(...n);n=n.map(x=>x/norm);
+   const first=waveAt(n[1],Math.atan2(n[0],n[2])),materialCrest=first[1]+Math.abs(first[0])*3,current=[Math.sin(n[1]*3.2+n[2]*2.4+t*.22),Math.sin(n[2]*3.6-n[0]*2.1-t*.18),Math.sin(n[0]*3.1+n[1]*2.7+t*.16)],dot=n.reduce((a,x,j)=>a+x*current[j],0);
+   n=n.map((x,j)=>x+(current[j]-x*dot)*.14*state.flowStrength+((j===1?1:0)-x*n[1])*first[0]*1.35*state.flowStrength);norm=Math.hypot(...n);n=n.map(x=>x/norm);
+   const wave=waveAt(n[1],Math.atan2(n[0],n[2])),r=radius(n,wave)-.004;pos=turn(n.map(x=>x*r));const facing=smooth(-.1,.38,pos[2]),threads=.65+.35*smooth(-.4,.8,Math.sin(n[0]*4+n[2]*3+t*.15)+.35*Math.cos(n[1]*5-n[0]*2));
+   alpha=(.82+.38*facing)*threads*state.innerOpacity*state.opacity*(.1+.9*facing);crease=materialCrest*state.flowStrength*facing*.5;
+   pixels=state.pointSize*(.8+.28*facing+crease*.1)*dimension/600;
+   const mobility=.22+.78*smooth(.45,.85,hash(id)),flight=bounceAt(id+17)*mobility*Math.pow(clamp(pos[2]/.65,0,1),2),direction=turn([Math.sin(n[0]*5+n[1]*2)*.38,1,Math.cos(n[2]*4)*.24]);pos=pos.map((x,j)=>x+direction[j]*flight);
+   if(state.mode){const r=.765-Math.max(0,spring)*v*.12;pos=[Math.cos(theta)*r,Math.sin(theta)*r,0];alpha*=.35;crease=0}
+  }
+  const energy=i<rimCount?alpha*3.2:state.innerOpacity*1.25*(1-Math.exp(-alpha*2.1/Math.max(.01,state.innerOpacity*1.25)))+1.8*(1-Math.exp(-alpha*crease*7/1.8));
+  ctx.globalAlpha=1-Math.exp(-Math.max(0,energy));ctx.beginPath();ctx.arc(w/2+pos[0]*.88*size,h/2-pos[1]*.88*size,Math.max(.25,pixels*.52),0,Math.PI*2);ctx.fill();
+ }
+ ctx.globalAlpha=1;
+}requestAnimationFrame(draw);
+
+</script></body></html>
