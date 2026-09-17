@@ -29,3 +29,5 @@ These checks temporarily change parameters and restore them; do not adjust setti
 Finally, exit Luma from the tray and run `python tests/verify_product.py` to verify EXE icon resources, fresh-install defaults and reset behavior on both architectures. It backs up the original settings file, restores it in `finally`, and leaves the product EXE running. Use a disposable Windows account for unattended testing that must also withstand forced interruption.
 
 Run fresh-install tests from a normal Windows terminal. If a packaged host virtualizes LocalAppData, the script verifies EXE resources but explicitly skips file-isolation checks rather than risking another copy of user preferences.
+
+With the newly built app running, `python tests/verify_topmost.py` checks the tray command, actual native topmost style, independent mouse passthrough, persistence across x64/x86 restarts, and the complete reset preset. It restores preferences and position afterward.

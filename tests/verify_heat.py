@@ -32,7 +32,7 @@ keys=re.search(r'for\(auto key:\{([^}]+)\}',source)[1];keys=re.findall(r'"([^"]+
 actual={}
 for key in keys:
     value=re.search(r'\b'+key+r'=([^,;]+)',config)[1]
-    actual[key]=value.strip('"') if key=='color' else int(value=='true') if key=='locked' else float(value.rstrip('f'))
+    actual[key]=value.strip('"') if key=='color' else int(value=='true') if key in ['locked','topmost'] else float(value.rstrip('f'))
 verify('Every persisted factory parameter matches the captured browser preset',all(actual[k]==capture[k] for k in keys))
 (folder/'factory-defaults.json').write_text(json.dumps(actual,indent=2))
 (folder/'heat-verification.json').write_text(json.dumps({'checks':checks,'metrics':metrics},indent=2))

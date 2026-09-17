@@ -1,4 +1,4 @@
-param([ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version='1.0.0')
+param([ValidatePattern('^\d+\.\d+\.\d+$')][string]$Version='1.1.0')
 $ErrorActionPreference = 'Stop'
 Set-Location -LiteralPath $PSScriptRoot
 $executables = @('Luma.exe','Luma-x86.exe')

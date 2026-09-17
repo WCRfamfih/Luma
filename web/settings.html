@@ -68,7 +68,7 @@
 <div class="range"><div class="label"><label for="motion">流动速度</label><output for="motion"></output></div><input id="motion" type="range" min="0" max="3" step="0.1"></div>
 <div class="range"><div class="label"><label for="rotationSpeed">三维游转速度</label><output for="rotationSpeed"></output></div><input id="rotationSpeed" type="range" min="0" max="2" step="0.05"></div>
 <div class="range"><div class="label"><label for="physicsFreedom">回弹自主度</label><output for="physicsFreedom"></output></div><input id="physicsFreedom" type="range" min="0" max="1" step="0.05"><p class="control-hint">默认 50%：较紧的驱动响应与自由弹簧回落各占一半。</p></div>
-<div class="range"><div class="label"><label for="outerWaveInfluence">海浪影响外环</label><output for="outerWaveInfluence"></output></div><input id="outerWaveInfluence" type="range" min="0" max="1" step="0.05"><p class="control-hint">默认 20%。外环自主流动，音乐驱动整体缩放。</p></div>
+<div class="range"><div class="label"><label for="outerWaveInfluence">海浪影响外环</label><output for="outerWaveInfluence"></output></div><input id="outerWaveInfluence" type="range" min="0" max="1" step="0.05"><p class="control-hint">默认 25%。外环自主流动，音乐驱动整体缩放。</p></div>
 </div>
 <div class="group" data-advanced hidden><div class="group-head"><h2>辉光细节</h2><span class="number">LIGHT</span></div>
 <div class="range"><div class="label"><label for="bloomDecay">呼吸回落时间</label><output for="bloomDecay"></output></div><input id="bloomDecay" type="range" min="0.1" max="1.5" step="0.05"><p class="control-hint">越长，鼓点后的光晕回落越舒展。</p></div>
@@ -79,11 +79,11 @@
 <div class="group"><div class="group-head"><h2>悬浮与性能</h2><span class="number">OVERLAY</span></div>
 <div class="select-row"><label>粒子密度<select id="density"><option value="1">轻盈 · 约 9 千粒子上限</option><option value="2">均衡 · 约 2 万粒子上限</option><option value="3">细腻 · 约 3.7 万粒子上限</option></select></label><label data-advanced hidden>帧率上限<select id="fps"><option value="30">30 FPS · 节能</option><option value="60">60 FPS · 流畅</option><option value="120">120 FPS · 高刷</option></select></label></div>
 <div class="range" data-advanced hidden><div class="label"><label for="aaStrength">抗锯齿 · 保留颗粒</label><output for="aaStrength"></output></div><input id="aaStrength" type="range" min="0" max="1" step="0.05"><p class="control-hint">FXAA + 亚像素覆盖，默认 75%；0 为关闭。</p></div>
-<div class="toggle-row"><label for="locked">锁定位置 / 鼠标穿透<small>置顶显示，不影响下方窗口操作</small></label><input id="locked" class="switch" type="checkbox"></div>
+<div class="toggle-row"><label for="locked">锁定位置 / 鼠标穿透<small>开启后不影响下方窗口操作；置顶可在托盘菜单独立切换</small></label><input id="locked" class="switch" type="checkbox"></div>
 </div>
 </div>
 <div class="footer-row"><span id="saveState" role="status">设置自动保存至本机</span><button id="reset">恢复默认</button></div>
-</section></main><footer class="product-footer" aria-label="关于与开源信息"><div class="credits"><span>LUMA / 流光 1.0.0</span><span>作者 WCRfamfih</span><a href="https://github.com/WCRfamfih/Luma" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div><span id="renderNote">原生 GPU 渲染 · 本机音频 · 无需登录</span><p class="license-note">基于 MIT 协议开源：允许使用、修改、商用和再分发，须保留版权声明与许可证；软件按原样提供，不作担保。<a href="https://github.com/WCRfamfih/Luma/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">阅读完整协议 ↗</a></p></footer>
+</section></main><footer class="product-footer" aria-label="关于与开源信息"><div class="credits"><span>LUMA / 流光 1.1.0</span><span>作者 WCRfamfih</span><a href="https://github.com/WCRfamfih/Luma" target="_blank" rel="noopener noreferrer">GitHub 仓库 ↗</a></div><span id="renderNote">原生 GPU 渲染 · 本机音频 · 无需登录</span><p class="license-note">基于 MIT 协议开源：允许使用、修改、商用和再分发，须保留版权声明与许可证；软件按原样提供，不作担保。<a href="https://github.com/WCRfamfih/Luma/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">阅读完整协议 ↗</a></p></footer>
 <script>
 const $=id=>document.getElementById(id), token=location.hash.slice(1)||sessionStorage.getItem('luma-token')||'';if(token){sessionStorage.setItem('luma-token',token);history.replaceState(null,'',location.pathname)}
 let state=null,pending={},saveTimer,busy=false,connected=false,previewTime=0,lastTime=0,pollTimer;const controls=['color','pointSize','glow','opacity','sensitivity','motion','demo','size','density','fps','locked','innerDensity','innerOpacity','flowStrength','waveStrength','waveSpeed','physicsFreedom','rotationSpeed','waveRoughness','bloomStrength','bloomSpread','heatStrength','outerWaveInfluence','innerBounce','aaStrength','bloomPulse','bloomDecay'];

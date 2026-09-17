@@ -6,7 +6,7 @@ Luma is a native C++17 Windows desktop process. It embeds its settings page, sha
 
 `src/audio.h` captures the default multimedia output through WASAPI loopback and performs a 2048-point FFT with 64 logarithmic bands. Transient detection distinguishes attacks from sustained energy. Low-frequency travelling waves and general drum impulses have independent histories, so occupied wave slots do not suppress new particle kicks. `src/breath.h` supplies bounded, decaying light modulation.
 
-Music drives global spring displacement. The exterior has its own smooth field, with wave coupling defaulting to 20%. Interior impulses blend driven response with freer damped springs. Orientation evolves continuously in three dimensions. Equal-area particle anchors with stable jitter and curved displacement avoid a latitude/longitude lattice and pole crowding.
+Music drives global spring displacement. The exterior has its own smooth field, with wave coupling defaulting to 25%. Interior impulses blend driven response with freer damped springs. Orientation evolves continuously in three dimensions. Equal-area particle anchors with stable jitter and curved displacement avoid a latitude/longitude lattice and pole crowding.
 
 ## Rendering
 
